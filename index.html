@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Kutubxonasi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #111827;
+            --card-bg: #1F2937;
+            --primary-accent: #3B82F6; /* Cool Blue */
+            --text-color: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --border-color: #374151;
+            --code-bg: #000000;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 { font-weight: 700; }
+        .highlight { color: var(--primary-accent); }
+        
+        /* Header & Hero */
+        .header {
+            padding-top: 80px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 15px;
+        }
+        .header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            background-color: var(--primary-accent);
+            color: #fff;
+        }
+        .filter-btn.active {
+            background-color: var(--primary-accent);
+            color: #fff;
+            border-color: var(--primary-accent);
+        }
+
+        /* Prompt Grid */
+        .prompt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .prompt-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .prompt-card.hidden { display: none; }
+        .prompt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .prompt-card-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        .prompt-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .prompt-card h3 { font-size: 1.4rem; margin-right: 15px; }
+        .prompt-card .category-tag {
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+        .prompt-card p { color: var(--text-secondary); }
+        .prompt-code {
+            background-color: var(--code-bg);
+            padding: 20px;
+            position: relative;
+        }
+        .prompt-code pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9rem;
+            color: #D1D5DB;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--border-color);
+            color: var(--text-color);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .copy-btn:hover { background-color: var(--primary-accent); }
+        
+        .coming-soon-card {
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 200px;
+        }
+        .coming-soon-card h3 { font-size: 1.5rem; color: var(--text-secondary); }
+
+        /* Final CTA */
+        .final-cta {
+            margin-top: 100px;
+            background-color: var(--card-bg);
+            padding: 60px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .final-cta h2 { font-size: 2rem; margin-bottom: 15px; }
+        .final-cta p { max-width: 600px; margin: 0 auto 30px; color: var(--text-secondary); }
+        .final-cta .cta-button {
+            background: var(--primary-accent);
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+        }
+        
+        footer { text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #6B7280; }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+
+        <section class="header">
+            <h1>AI <span class="highlight">Prompt</span> Kutubxonasi</h1>
+            <p>Eng kuchli va sinovdan o'tgan promptlar to'plami. O'z loyihalaringizni keyingi darajaga olib chiqing.</p>
+        </section>
+
+        <section id="prompts">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Barchasi</button>
+                <button class="filter-btn" data-filter="game">O'yin</button>
+                <button class="filter-btn" data-filter="landing">Landing Page</button>
+                <button class="filter-btn" data-filter="app">Ilova</button>
+            </div>
+
+            <div class="prompt-grid">
+                
+                <div class="prompt-card" data-category="game">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>3D Platformer O'yin G'oyasi</h3>
+                            <span class="category-tag">O'yin</span>
+                        </div>
+                        <p>Ushbu prompt o'yin uchun to'liq konsepsiya, bosh qahramon, dunyo va asosiy mexanikalarni yaratib beradi.</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>Create a detailed game concept for a 3D platformer. The theme is "a tiny robot exploring a giant, abandoned library". I need:
+1.  A name and backstory for the robot protagonist.
+2.  Three main game mechanics (e.g., grappling hook, gliding).
+3.  Descriptions of three distinct levels (e.g., "The Ink Rivers," "The Paper Mountains").
+4.  A final boss concept.</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="landing">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>"SaaS" uchun Landing Page</h3>
+                            <span class="category-tag">Landing Page</span>
+                        </div>
+                        <p>AI yordamida zamonaviy SaaS (Software as a Service) mahsuloti uchun HTML va CSS kodini yaratish.</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>Generate the complete HTML and CSS code for a modern, responsive landing page for a SaaS product called "TaskFlow", a project management tool. Use a dark theme with blue accents. The landing page must include these sections:
+1.  A header with a logo and navigation.
+2.  A hero section with a strong headline and a call-to-action button.
+3.  A "Features" section with three feature cards (icon, title, description).
+4.  A pricing table with three tiers.
+5.  A simple footer.
+Use Flexbox or Grid for the layout.</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="app">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>Ob-havo Ilovasi Logikasi</h3>
+                            <span class="category-tag">Ilova</span>
+                        </div>
+                        <p>Python dasturlash tilida ob-havo ma'lumotlarini olib keluvchi ilova uchun backend funksiyalarini yaratish.</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>Write a Python function using the 'requests' library that takes a city name as an argument. The function should:
+1.  Fetch weather data from the OpenWeatherMap API.
+2.  Parse the JSON response to get the current temperature, humidity, and weather description.
+3.  Return these three values in a clean dictionary format.
+4.  Include error handling for invalid city names or API connection issues.
+Provide comments explaining each step.</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="game">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>O'yin uchun Dialoglar</h3>
+                            <span class="category-tag">O'yin</span>
+                        </div>
+                        <p>Fantastik RPG o'yini uchun qishloq oqsoqoli va bosh qahramon o'rtasidagi suhbatni yaratish.</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>Write a short, engaging dialogue for an RPG game. The dialogue is between a young hero and an old village elder. The hero is asking about a legendary lost sword. The elder is wise but slightly mysterious. The tone should be epic fantasy. Include at least 5 lines for each character.</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card coming-soon-card">
+                    <h3>Yangi promptlar <br>tez kunda! 🚀</h3>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="final-cta" id="cta">
+            <h2>Shunday Promptlarni O'zingiz <br>Yaratishni <span class="highlight">O'rganing</span></h2>
+            <p>Prompt yozish — bu kelajakning eng muhim ko'nikmalaridan biri. Agar siz ham AI bilan to'g'ri "muloqot" qilishni va o'z g'oyalaringizni tezda natijaga aylantirishni istasangiz, mening kanalimga qo'shiling.</p>
+            <a href="KANALINGIZ_UCHUN_LINK" target="_blank" class="cta-button">Kanalga O'tish</a>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const promptCards = document.querySelectorAll('.prompt-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    // Show/hide cards
+                    promptCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Copy button functionality
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const promptCode = button.nextElementSibling.innerText;
+                    navigator.clipboard.writeText(promptCode).then(() => {
+                        const originalText = button.innerText;
+                        button.innerText = 'Nusxalandi!';
+                        setTimeout(() => {
+                            button.innerText = originalText;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Copy failed', err);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
