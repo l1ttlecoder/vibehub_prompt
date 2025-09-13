@@ -123,7 +123,14 @@
             background-color: var(--code-bg);
             padding: 20px;
             position: relative;
+            max-height: clamp(180px, 34vh, 420px);
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            border-top: 1px solid var(--border-color);
         }
+        .prompt-code::-webkit-scrollbar { width: 10px; height: 10px; }
+        .prompt-code::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 6px; }
+        .prompt-code::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
         .prompt-code pre {
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -195,6 +202,7 @@
                 <button class="filter-btn" data-filter="game">O'yin</button>
                 <button class="filter-btn" data-filter="landing">Landing Page</button>
                 <button class="filter-btn" data-filter="app">Ilova</button>
+                <button class="filter-btn" data-filter="allinone">All in One</button>
             </div>
 
             <div class="prompt-grid">
@@ -266,7 +274,118 @@ Provide comments explaining each step.</code></pre>
                     </div>
                     <div class="prompt-code">
                         <button class="copy-btn">Nusxalash</button>
-                        <pre><code>Write a short, engaging dialogue for an RPG game. The dialogue is between a young hero and an old village elder. The hero is asking about a legendary lost sword. The elder is wise but slightly mysterious. The tone should be epic fantasy. Include at least 5 lines for each character.</code></pre>
+                        <code>
+                            Create a complete, bug-free single file game named NEONDODGE using vanilla HTML/CSS/JS (no external libraries). Output only one file named index.html.
+
+                            Gameplay
+                            
+                            The game runs on a canvas centered on a dark-blue radial-gradient page.
+                            
+                            Player: a small rounded square “capsule” with soft neon glow and a short particle trail; controlled A / D or ← / →; capped speed, smooth acceleration/deceleration.
+                            
+                            Obstacles: glowing rounded rectangles (“neon bars”) with random width/angle that spawn above the canvas and fall downward at increasing speed. Bars must never be unfair: ensure a minimum gap and spawn off-screen before entering.
+                            
+                            Collision: axis-aligned check approximated by separating axis or bounding circle; precise enough for angled bars. On collision → game over animation (fade + white flash) then show restart hint.
+                            
+                            Slow-motion: while Space is held, apply a timeScale = 0.45 to all motions & spawns; add a subtle vignette + desaturate effect; show a small “SLOW-MO” chip at top. Release Space → back to normal.
+                            
+                            Pause: P toggles pause (freeze updates but keep a faint UI pulse).
+                            
+                            Score: increases with survival time and near-miss bonus (when a bar passes within N px of player, add +5 and tiny “+5” pop).
+                            
+                            Best: persist best score in localStorage and render “Score / Best” at the top center.
+                            
+                            Difficulty curve: every 10s slightly increase fall speed and spawn rate; clamp to a reasonable max.
+                            
+                            Mobile
+                            
+                            If ontouchstart is available, show two translucent rounded buttons fixed at bottom left/right (◄ ►) and a central “SLOW” button; also allow drag on canvas (finger x controls player target x). Buttons must not scroll the page.
+                            
+                            Visual Style
+                            
+                            Clean neon look on a starfield: faint twinkling stars layer behind the action.
+                            
+                            Canvas container has large rounded corners, inner shadow, and bloom-like glow on obstacles and player (draw blurred second pass or shadow).
+                            
+                            Minimal HUD on top: NEONDODGE title, Score, Best, P=Pause, ←/→/A/D — Mobile: tap/drag.
+                            
+                            Structure & Quality
+                            
+                            Single html file containing:
+                            
+                            Inline style with CSS variables for colors, fonts (use system UI), and responsive layout.
+                            
+                            Inline script implementing a tiny engine with:
+                            
+                            Game loop using requestAnimationFrame, delta time and timeScale (affected by slow-mo).
+                            
+                            Modules (IIFEs or classes): Player, Obstacle, Spawner, Particles, UI, Starfield, Input.
+                            
+                            Constants at top (CANVAS_W/H, PLAYER_SPEED, BAR_MIN/MAX, SPAWN_INTERVAL, etc.).
+                            
+                            Resize handler to keep aspect ratio (e.g., 16:9 inside container) and adjust input bounds.
+                            
+                            Ensure no layout shifts, no console errors, and stable 60 FPS on typical laptops/phones.
+                            
+                            Add helpful English comments for each section.
+                            
+                            UX details
+                            
+                            Start screen overlays the canvas with a “Press Any Key / Tap to Start” card; after game over, show “R to Restart”.
+                            
+                            Tiny confetti/particle burst on each near-miss bonus.
+                            
+                            All text is crisp on HiDPI (use ctx.scale(devicePixelRatio, devicePixelRatio) and adjust sizes).
+                            
+                            Keyboard shortcuts: R restart, M toggle minimal SFX (synthesize with WebAudio bleeps, but keep it optional and off by default).
+                            
+                            Deliverable
+                            
+                            Output only the final index.html content. No external assets. Make sure everything works when saved as a single file and opened in a browser.
+                        </code>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="allinone">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>Universal va Kuchli Prompt Karkasi</h3>
+                            <span class="category-tag">All in One</span>
+                        </div>
+                        <p>AI bilan har qanday vazifa uchun yagona va aniq prompt yozishga yordam beruvchi "The Ultimate Prompt Framework".</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>Universal va Kuchli Prompt Karkasi (The Ultimate Prompt Framework)
+
+1) ROL (Persona)
+Kim bo'lib javob berishim kerak? Misollar:
+- Sen tajribali marketologsan
+- Sen jahon tarixi bo'yicha professording
+- Sen startap uchun mahsulot menejerisan
+- Sen professional copywriter'san
+
+2) VAZIFA (Task)
+Asosiy maqsad nima? Nima qilishim kerakligini aniq va lo'nda ayting.
+
+3) KONTEKST (Context)
+Vazifani bajarish uchun zarur bo'lgan qo'shimcha ma'lumotlar:
+- Kompaniya, auditoriya, raqobatchilar, cheklovlar va boshqalar
+
+4) FORMAT (Format)
+Natija qanday ko'rinishda bo'lishi kerak? Misollar:
+- Jadval, ro'yxat, HTML, rasmiy hisobot, 3 paragrafdan oshmasin
+
+5) NAMUNA (Example)
+O'xshash, yaxshi natija namunasini bering.
+
+6) CHEKLOVLAR va QOIDALAR (Constraints & Rules)
+Nimalardan saqlanish kerak? Misollar:
+- Jargondan foydalanma
+- Texnik atamalarni ishlatma
+- Javob 500 so'zdan oshmasin
+- Faqat ishonchli manbalarga tayan
+- Baho berishdan saqlan, faqat faktlarni keltir</code></pre>
                     </div>
                 </div>
 
