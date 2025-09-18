@@ -516,6 +516,96 @@ Traffic lights cycle red/green; pedestrians as simple capsules crossing. Simple 
                     </div>
                 </div>
 
+                <div class="prompt-card" data-category="game">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>Snake O'yini (Single-File HTML)</h3>
+                            <span class="category-tag">O'yin</span>
+                        </div>
+                        <p>Vanilla JS bilan bitta faylda to'liq Snake o'yini: canvas, dark UI, pause/start, skorlash va localStorage bilan.</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>Write a complete single-file HTML document for a Snake game. The game should use only plain JavaScript, no external libraries. Include all CSS and JS inside the same file.
+
+Requirements:
+- Use a &lt;canvas&gt; for the board, about 560×560 pixels, with crisp pixelated rendering.
+- Board should be a 28×28 grid, each cell 20px.
+- Snake starts in the center, moves at a constant tick rate (~100ms).
+- Arrow keys or WASD to control, prevent 180° turns.
+- Space restarts, P pauses/resumes.
+- Add a nice modern dark UI with a card container, top bar with title, score, best score (saved to localStorage), and buttons for Start/Pause.
+- Show an overlay text box ("Press Start", "Paused", "Game Over") centered over the canvas when idle, paused, or over.
+- Snake should be greenish with a fading tail, have little eyes, and food should be red.
+- Include grid lines, rounded snake segments, and a subtle glow/gradient background.
+- Everything must be contained in this single file.</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="game">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>Orb Sumo: Push or Be Pushed!</h3>
+                            <span class="category-tag">O'yin</span>
+                        </div>
+                        <p>2 o'yinchi uchun tezkor arena o'yini: glowing orb bilan raqibni ringdan chiqarib yuboring; dual-stick yoki klaviatura boshqaruvi.</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>🔵🟠 Orb Sumo: Push or Be Pushed!
+
+Step into the arena as a glowing orb and battle head-to-head in a cosmic sumo showdown!
+
+Objective: Knock your opponent out of the ring while staying inside yourself.
+
+Controls: Dual-stick or keyboard friendly, designed for 2 players (Controller Recommended).
+
+Mechanics:
+
+Push, dodge, and outmaneuver your rival.
+
+Momentum matters—time your movements to gain the edge.
+
+The arena gets smaller the longer you last.
+
+Quick, simple, and addictive. Perfect for local duels where every push counts!</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="game">
+                    <div class="prompt-card-content">
+                        <div class="prompt-card-header">
+                            <h3>Tower Bloxx–Style Stacking Game</h3>
+                            <span class="category-tag">O'yin</span>
+                        </div>
+                        <p>HTML5 Canvas va Vanilla JS bilan Tower Bloxx uslubidagi stacking o'yin: tebranuvchi kran, SPACE/click bilan blok tashlash, noto'g'ri tekislikda ortiqcha qismlar kesilib tushadi, 3 ta soyabonli odamlar, combo va localStorage.</p>
+                    </div>
+                    <div class="prompt-code">
+                        <button class="copy-btn">Nusxalash</button>
+                        <pre><code>Create a browser-playable Tower Bloxx–style game using only HTML5 + JavaScript + Canvas (no external libraries).
+
+Gameplay requirements:
+- Player controls a swinging crane that moves only above the tower (not full 180°).
+- Press SPACE or mouse click to drop a building block.
+- Blocks should stack on top of each other. If alignment is imperfect, trim off the overhang and make trimmed parts fall down.
+- If the player misses completely, spawn 3 umbrella people jumping out from the building and falling with parachute-like umbrellas.
+- Scoring: +12 points per block, combo bonus if perfectly centered.
+- If the player fails, show Game Over with Restart option.
+
+Design requirements (as in Tower Bloxx screenshots):
+- Red building blocks with arched top windows and a main door on the bottom block.
+- Sparkle animation appears when a block lands successfully.
+- Background: gradient sky, tall rectangular city slabs, blue vertical stripes, floating clouds.
+- Foreground: ground area with brown soil, gray podium, yellow fence, tree on the right.
+- Retro/pixelated aesthetic (use image-rendering: pixelated in CSS).
+
+Technical:
+- Everything must be contained in a single HTML file.
+- Responsive scaling to fit full browser window.
+- Store best score in localStorage.</code></pre>
+                    </div>
+                </div>
+
                 <div class="prompt-card coming-soon-card">
                     <h3>Yangi promptlar <br>tez kunda! 🚀</h3>
                 </div>
@@ -537,7 +627,8 @@ Traffic lights cycle red/green; pedestrians as simple capsules crossing. Simple 
         </div>
     </footer>
 
-    <script>
+
+         <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Filter functionality
             const filterButtons = document.querySelectorAll('.filter-btn');
